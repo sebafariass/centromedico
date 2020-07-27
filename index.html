@@ -23,22 +23,25 @@
       <input type="text" name="name" id="nombre" placeholder="Nombre" class="input__dimensiones" />
       <input type="text" name="lastname" id="apellidos" placeholder="Apellido"  class="input__dimensiones" />
       <input type="email"  name="email"  id="correo" placeholder="Correo electrónico" class="input__dimensiones" />
-      <input type="text"  name="fecha" id="fecha" placeholder="dd-mm-aaaa"  class="input__dimensiones"/>
+      
       <input type="text"  name="edad" id="edad" placeholder="Ingresa tu edad" class="input__dimensiones"/>
 
 
       <input type="text" name="user" id="usuario" placeholder="Usuario" class="input__dimensiones" />
       <input type="text"  name="phone" id="telefono" placeholder="Teléfono (986096222)" class="input__dimensiones"/>
       <input type="text"  name="rut" id="rut" placeholder="Ej: 11255366-k " class="input__dimensiones"/>
+      <input type="text"  name="fecha" id="fecha" placeholder="Día Atención (dd-mm-aaaa)"  class="input__dimensiones"/>
      <div>
 
       <!-- Select HORA Y ESPECIALISTA -->
       <select id="hora__solicitada" name="hora__solicitudes" onchange="hora__solicitud();" class="input__dimensiones">
-        <option value="Tres especialistas disponibles">Odontología</option>
-        <option value="Nueve especialistas disponibles">Traumatología</option>
-        <option value="Siete especialistas disponibles">Psicología</option>
-        <option value="Once especialistas disponibles">Pediatría</option>
-        <option value="Dos especialistas disponibles">Psiquiatría</option>
+        
+        <option selected>Seleccionar hora</option>
+        <option >15:00</option>
+        <option >15:45</option>
+        <option >17:00</option>
+        <option >19:00</option>
+        <option >22:00</option>
         </select>
      </div> 
 
@@ -47,21 +50,23 @@
     
 
      <div>
-      <select  id="producto" name="Hora__especialista" onchange="hora__especialista();" class="input__dimensiones">
-        <option>Horas Disponibles</option>
-        <option value="Confirmada">15:00 Traumatología</option>
-        <option value="Confirmada">16:00 Otorrino</option>
-        <option value="Confirmada">16:30 Pediatría</option>
-        <option value="Confirmada">17:00 Odontología</option>
-        <option value="Confirmada">19:00 Psicología</option>
-        <option value="Confirmada">21:00 Psiquiatría</option>
+      <select  id="especialista" name="Hora__especialista" onchange="hora__especialista();" class="input__dimensiones">
+       
+        
+        <option selected>Seleccionar especialidad</option>
+        <option >Traumatología</option>
+        <option >Otorrino</option>
+        <option >Pediatría</option>
+        <option >Odontología</option>
+        <option >Psicología</option>
+        <option >Psiquiatría</option>
 
         </select>
      </div> 
      
 
       <div class="contenedor_button">
-        <button>Reservar</button>
+        <button type="button" onclick="validar()" class="btn btn-success">Enviar</button>
       </div>
 
     
@@ -72,7 +77,9 @@
     
     </form>
 
-    
+    <div>
+      <p id="mensaje__descripcion"></p>
+  </div>
 
     <!-- scriptss-->
     <script src="assets/js/script.js"></script>

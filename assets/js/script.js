@@ -4,14 +4,16 @@ function validar() {
     correo,
     usuario,
     telefono,
-    expresion,
-    nameExpress,
-    apellidoExpress,
     fecha,
     rut,
-    rutExpress,
     edad,
-    fechaExpress;
+    rutExpress,
+    fechaExpress,
+    expresion,
+    nameExpress,
+    apellidoExpress;
+
+  //darle valor
 
   nombre = document.getElementById("nombre").value;
   apellidos = document.getElementById("apellidos").value;
@@ -21,6 +23,8 @@ function validar() {
   fecha = document.getElementById("fecha").value;
   rut = document.getElementById("rut").value;
   edad = document.getElementById("edad").value;
+  especialista = document.getElementById("especialista").value;
+  hora = document.getElementById("hora__solicitada").value;
 
   //expresion regular para correo electronico
   expresion = /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/i;
@@ -46,7 +50,9 @@ function validar() {
     edad === "" ||
     telefono === "" ||
     fecha === "" ||
-    rut === ""
+    rut === "" ||
+    especialista === "" ||
+    hora === ""
   ) {
     // Completar registro
 
@@ -60,6 +66,7 @@ function validar() {
     return false;
   } else if (!nameExpress.test(nombre)) {
     alert("Tu nombre sólo debe tener Letras");
+
     return false;
   }
 
@@ -122,55 +129,56 @@ function validar() {
   else if (!expresion.test(correo)) {
     alert("Correo invalido ");
     return false;
-  } else {
-    alert(  // mensaje final a mostrar 
-      "Estimado " +
-        nombre +
-        " " +
-        apellidos +
-        ", " +
-        " " +
-        "Rut " +
-        rut +
-        ".  Gracias por completar nuestro formulario. " +
-        " Tu nombre de usuario es " +
-        usuario +
-        ". Te enviamos un correo a " +
-        correo +
-        ". Con el detalle de su cita"
-    );
-    return false;
   }
+
+  
+  //nombrar funcion para usar despues -->
+  mostrarDescripcion(
+    nombre,
+    apellidos,
+    hora,
+    rut,
+    edad,
+    especialista,
+    fecha,
+    correo
+  );
 }
 
-//HORA SOLICITADA Y SOLICITUD ESPECIALISTA HORA
 
-function hora__solicitud()
-{
-/* Para obtener el valor */
-let cod = document.getElementById("hora__solicitada").value;
-alert(cod);
- 
-/* Para obtener el texto */
-let combo = document.getElementById("hora__solicitada");
-let selected = combo.options[combo.selectedIndex].text;
-alert(selected);
+
+//mensaje al usuario con datos correctos
+function mostrarDescripcion(
+  nombres,
+  apellidos,
+  hora,
+  rut,
+  edad,
+  especialista,
+  fecha,
+  correo
+) {
+  let descripcion = `Estimado ${nombres} ${apellidos},edad ${edad} , RUT : ${rut} su hora quedo agendada para la hora ${hora} con el especialista en ${especialista}, el día ${fecha} te envíamos un correo a ${correo} con toda la información documentada. Gracias por preferirnos.`;
+
+
+
+  //mensaje que aparece despues de completar el formulario
+  alert(descripcion);
+  document.getElementById("mensaje__descripcion").textContent = descripcion;
 }
 
+//HORA SOLICITADA
 
+function hora__solicitud() {
+  /* Para obtener el valor */
+  let hora__por__solicitar = document.getElementById("hora__solicitada").value;
+  alert(hora__por__solicitar);
+}
 
+//HORA ESPECIALISTA
 
-
-//HORA SOLICITADA Y SOLICITUD ESPECIALISTA HORA
-
-function hora__especialista()
-{
-/* Para obtener el valor */
-let cod = document.getElementById("producto").value;
-alert(cod);
- 
-/* Para obtener el texto */
-let combo = document.getElementById("producto");
-let selected = combo.options[combo.selectedIndex].text;
-alert(selected);
+function hora__especialista() {
+  /* Para obtener el valor */
+  let especialista__atendiendo = document.getElementById("especialista").value;
+  alert(especialista__atendiendo);
 }
